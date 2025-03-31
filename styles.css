@@ -1,0 +1,260 @@
+:root {
+  --primary: #6C5CE7;
+  --primary-dark: #5649C0;
+  --secondary: #00B894;
+  --accent: #FD79A8;
+  --highlight: #FDCB6E;
+  --light: #F8F9FA;
+  --dark: #2D3436;
+  --gray: #6c757d;
+  --success: #00B894;
+  --error: #D63031;
+  --bg: #F5F6FA;
+  --card: #FFFFFF;
+  --text: #2D3436;
+  --border: #DFE6E9;
+}
+
+[data-theme="dark"] {
+  --bg: #1A1A2E;
+  --card: #16213E;
+  --text: #E2E8F0;
+  --border: #1E293B;
+  --primary: #8A7CFF;
+  --secondary: #00E5B0;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  margin: 0;
+  padding: 2rem;
+  min-height: 100vh;
+  transition: all 0.5s ease;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  height: 1em;
+  width: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+button, .btn, .upload-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  min-width: 120px;
+  height: 44px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+button:hover, .upload-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+button:active {
+  transform: translateY(0);
+}
+#clear-signature {
+  background: white;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+#clear-signature:hover {
+  background: rgba(108, 92, 231, 0.05);
+}
+.large-btn {
+  padding: 14px 28px;
+  min-width: 140px;
+  font-size: 1.1rem;
+}
+
+/* Signature Canvas */
+#signature-pad {
+  border: 2px dashed var(--secondary);
+  border-radius: 8px;
+  width: 100%;
+  height: 200px;
+  background: white;
+  margin: 10px 0;
+  touch-action: none;
+}
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  margin-bottom: 10px;
+}
+
+input.error {
+  border-color: var(--error);
+}
+.upload-box {
+  border: 2px dashed var(--primary);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px 0;
+  background: rgba(108, 92, 231, 0.05);
+  transition: all 0.3s ease;
+}
+
+.upload-box.drag-over {
+  background: rgba(108, 92, 231, 0.2) !important;
+  border-color: var(--secondary) !important;
+}
+
+.upload-box:hover {
+  background: rgba(108, 92, 231, 0.1);
+}
+.progress-bar {
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: var(--secondary);
+  transition: width 0.3s ease;
+}
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.switch {
+  width: 60px;
+  height: 30px;
+  background: var(--border);
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: var(--primary);
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .switch::after {
+  left: calc(100% - 27px);
+  background: var(--secondary);
+}
+
+/* Signature Preview */
+#signature-preview {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#signature-preview img {
+  max-width: 200px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* PDF Preview */
+#pdf-preview {
+  margin-top: 15px;
+}
+
+/* API Response */
+#api-response {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--light);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+  font-family: 'Menlo', monospace;
+  font-size: 0.9rem;
+}
+
+#api-response.hidden {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .container {
+    padding: 1.5rem;
+  }
+  
+  .signature-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  button {
+    width: 100%;
+  }
+  
+  .undo-redo {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .undo-redo button {
+    flex: 1;
+  }
+}
