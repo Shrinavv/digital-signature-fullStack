@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digisign</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div class="theme-toggle">
+    <div class="switch"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>eSign Documents & Collect Signatures Online</h1>
+    </header>
+
+    <hr>
+    <section class="upload-section">
+      <h2>1. Upload Document</h2>
+      <div class="upload-box">
+        <input type="file" id="document" accept=".pdf,.docx" hidden>
+        <label for="document" class="upload-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          Choose File
+        </label>
+        <span id="file-name">No file selected</span>
+        <div class="progress-bar hidden">
+          <div class="progress"></div>
+        </div>
+        <p id="upload-status"></p>
+      </div>
+      <div id="pdf-preview" class="hidden"></div>
+    </section>
+
+    <section class="signers-section">
+        <h2>2. Add Signers</h2>
+        <form id="signers-form">
+        <input type="email" id="signer-email" placeholder="signer@example.com" required>
+        <button type="submit">Add Signer</button>
+    </form>
+        <ul id="signers-list"></ul>
+    </section>
+
+    <!-- Signature Section -->
+    <section class="signature-section">
+      <h2>3. Sign Document</h2>
+      <canvas 
+        id="signature-pad" 
+        aria-label="Signature pad"
+        role="img"
+        tabindex="0"
+      ></canvas>
+      <div class="signature-actions">
+        <div class="undo-redo">
+          <button id="undo-btn">↩ Undo</button>
+          <button id="redo-btn">↪ Redo</button>
+        </div>
+        <button id="clear-signature">Clear</button>
+        <button id="submit-document" class="large-btn">
+          <span>Send for Signing</span>
+          <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="signature-preview"></div>
+    </section>
+
+    <!-- API Response -->
+    <div id="api-response" class="hidden">
+      <h3>Backend Response</h3>
+      <pre id="response-data"></pre>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
